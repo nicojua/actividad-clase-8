@@ -38,5 +38,51 @@ function validateInteger(num) {
 /*Pregunta 26
 A la función suma del ejercicio 6b) agregarle una llamada que valide que los números sean enteros. En caso que haya decimales mostrar un alerta con el error y retorna el número convertido a entero (redondeado).*/
 
+function suma(a, b) {
+    if (isNaN(a) || isNaN(b)) {
+      alert("Error: Uno de los parámetros no es un número.");
+      return NaN;
+    }
+  
+    if (!Number.isInteger(a)) {
+      alert("Primer número no es entero. Redondeando.");
+      a = Math.round(a);
+    }
+  
+    if (!Number.isInteger(b)) {
+      alert("Segundo número no es entero. Redondeando.");
+      b = Math.round(b);
+    }
+  
+    return a + b;
+  }
+  
+  let resultado = suma(5.7, 10.2);
+  console.log("Resultado con redondeo:", resultado);
+  
 /*Pregunta 27
 Convertir la validación del ejercicio 6d) en una función separada y llamarla dentro de la función suma probando que todo siga funcionando igual.*/
+
+
+function validateAndRound(num) {
+    if (!Number.isInteger(num)) {
+      alert("Número no entero. Redondeando.");
+      return Math.round(num);
+    }
+    return num;
+  }
+  
+  function suma(a, b) {
+    if (isNaN(a) || isNaN(b)) {
+      alert("Error: Uno de los parámetros no es un número.");
+      return NaN;
+    }
+  
+    a = validateAndRound(a);
+    b = validateAndRound(b);
+  
+    return a + b;
+  }
+  
+  let resultado = suma(8.3, 11.6);
+  console.log("Resultado final:", resultado);
